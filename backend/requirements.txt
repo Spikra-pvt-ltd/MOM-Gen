@@ -1,0 +1,9 @@
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.20
+openai==1.57.0       # kept for transcriber (not used for MoM currently)
+anthropic==0.49.0
+ffmpeg-python==0.2.0
+python-dotenv==1.0.1
+aiofiles==24.1.0
+requests==2.32.3

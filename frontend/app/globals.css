@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface-2: #f0f2f8;
+  --border: #e2e5ef;
+  --border-strong: #c8cde0;
+  --text-primary: #1a1d2e;
+  --text-secondary: #4a5068;
+  --text-muted: #8b91ac;
+  --primary: #4f46e5;
+  --primary-light: #ede9fe;
+  --primary-dark: #3730a3;
+  --accent: #0ea5e9;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Upload zone ── */
+.drop-zone {
+  border: 2px dashed var(--border-strong);
+  border-radius: 16px;
+  background: var(--surface);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
+}
+
+/* ── Primary button ── */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Copy button ── */
+.btn-copy {
+  background: white;
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* ── Card ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Processing steps ── */
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.step.pending {
+  color: var(--text-muted);
+}
+
+.step.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.step.done {
+  color: var(--success);
+}
+
+.step.error {
+  background: #fef2f2;
+  color: var(--error);
+}
+
+/* ── MoM Document ── */
+.mom-doc {
+  font-size: 0.93rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.mom-section {
+  margin-bottom: 24px;
+}
+
+.mom-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.mom-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mom-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: var(--text-secondary);
+}
+
+.mom-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.mom-attendee {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.action-group {
+  margin-bottom: 16px;
+}
+
+.action-group-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.action-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.action-item-check {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.action-item-text {
+  flex: 1;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.action-item-owner {
+  font-size: 0.88rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.mom-footer {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.transcript-box {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Chip ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* ── Animations ── */
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
